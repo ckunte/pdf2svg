@@ -1,0 +1,22 @@
+[package]
+name = "pdf2svg"
+version = "0.1.0"
+edition = "2021"
+description = "Convert PDF pages to standalone SVG files, powered by hayro-svg."
+license = "MIT OR Apache-2.0"
+
+[[bin]]
+name = "pdf2svg"
+path = "src/main.rs"
+
+[dependencies]
+hayro-svg = "0.7"
+hayro-interpret = "0.7"
+clap = { version = "4", features = ["derive"] }
+
+[profile.release]
+opt-level = 3
+strip = true
+lto = "thin"
+codegen-units = 1
+panic = "abort"
